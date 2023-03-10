@@ -1,35 +1,27 @@
+"use strict";
+
 // initialize
 let targetPosition;
 let scrollPosition;
-let mainHeaderHeight;
+let mainHeaderHeight = 60;
 let subHeader;
 
 //jQuery Start
 $(document).ready(() => {
 
+  // subheader scroll position
   subHeader = $('#sub-header')
-
   targetPosition = subHeader.offset().top;
-
-  if ($(window).width() < 992) {
-    $('#scrollspy').attr('data-bs-root-margin', '0px 0px -634px');
-  } else {
-    $('#scrollspy').attr('data-bs-root-margin', '0px 0px -788px');
-  }
-
-  $(window).resize(() => {
-    subHeader = $('#sub-header')
-    targetPosition = subHeader.offset().top;
-  })
-
-  mainHeaderHeight = 60;
 
   $(window).scroll(() => {
     scrollPosition = $(window).scrollTop()
     
     if (scrollPosition >= targetPosition - mainHeaderHeight) {
+      console.log('down')
       subHeader.addClass('fixed-top top-60')
     } else {
+      console.log('up')
+      console.log(targetPosition)
       subHeader.removeClass('fixed-top top-60')
     }
 
@@ -43,7 +35,7 @@ $(document).ready(() => {
       $('#menu_tab2').css('color', 'black');
       $('#menu_tab3').css('color', 'black');
     }
-    if ($('#menu_tab2').hasClass('active')) {
+    else if ($('#menu_tab2').hasClass('active')) {
       $('.sec2_tab_ui').css('background-color', 'white');
       $('.sec1_tab_ui').css('background-color', '#EBEBEB');
       $('.sec3_tab_ui').css('background-color', '#EBEBEB');
@@ -52,7 +44,7 @@ $(document).ready(() => {
       $('#menu_tab1').css('color', 'black');
       $('#menu_tab3').css('color', 'black');
     }
-    if ($('#menu_tab3').hasClass('active')) {
+    else if ($('#menu_tab3').hasClass('active')) {
       $('.sec3_tab_ui').css('background-color', 'white');
       $('.sec1_tab_ui').css('background-color', '#EBEBEB');
       $('.sec2_tab_ui').css('background-color', '#EBEBEB');
@@ -97,5 +89,4 @@ $(document).ready(() => {
     $('#step1-btn').removeClass('text-primary')
     $('#step2-btn').removeClass('text-primary')
   })
-
 })
