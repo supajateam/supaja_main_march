@@ -27,7 +27,7 @@ $(document).ready(() => {
     
     if (scrollPosition >= targetPosition - mainHeaderHeight) {
       subHeader.addClass('fixed-top top-60')
-    } else {
+    } else if (scrollPosition < targetPosition - mainHeaderHeight) {
       subHeader.removeClass('fixed-top top-60')
     }
 
