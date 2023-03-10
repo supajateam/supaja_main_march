@@ -2,11 +2,12 @@
 let targetPosition;
 let scrollPosition;
 let mainHeaderHeight;
+let subHeader;
 
 //jQuery Start
 $(document).ready(() => {
 
-  let subHeader = $('#sub-header')
+  subHeader = $('#sub-header')
 
   targetPosition = subHeader.offset().top;
 
@@ -17,6 +18,7 @@ $(document).ready(() => {
   }
 
   $(window).resize(() => {
+    subHeader = $('#sub-header')
     targetPosition = subHeader.offset().top;
   })
 
@@ -27,7 +29,7 @@ $(document).ready(() => {
     
     if (scrollPosition >= targetPosition - mainHeaderHeight) {
       subHeader.addClass('fixed-top top-60')
-    } else if (scrollPosition < targetPosition - mainHeaderHeight) {
+    } else {
       subHeader.removeClass('fixed-top top-60')
     }
 
