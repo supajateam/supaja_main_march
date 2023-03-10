@@ -35,7 +35,7 @@ $(document).ready(() => {
       $('#menu_tab2').css('color', 'black');
       $('#menu_tab3').css('color', 'black');
     }
-    else if ($('#menu_tab2').hasClass('active')) {
+    if ($('#menu_tab2').hasClass('active')) {
       $('.sec2_tab_ui').css('background-color', 'white');
       $('.sec1_tab_ui').css('background-color', '#EBEBEB');
       $('.sec3_tab_ui').css('background-color', '#EBEBEB');
@@ -44,7 +44,7 @@ $(document).ready(() => {
       $('#menu_tab1').css('color', 'black');
       $('#menu_tab3').css('color', 'black');
     }
-    else if ($('#menu_tab3').hasClass('active')) {
+    if ($('#menu_tab3').hasClass('active')) {
       $('.sec3_tab_ui').css('background-color', 'white');
       $('.sec1_tab_ui').css('background-color', '#EBEBEB');
       $('.sec2_tab_ui').css('background-color', '#EBEBEB');
