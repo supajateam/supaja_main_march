@@ -1,24 +1,26 @@
+// initialize
+let targetPosition;
+let scrollPosition;
+let mainHeaderHeight;
+
 //jQuery Start
 $(document).ready(() => {
 
-  const subHeader = $('#sub-header')
-  let scrollPosition = 0
+  let subHeader = $('#sub-header')
 
-  // sub-header sticky
-  const targetPosition = subHeader.offset().top;
+  targetPosition = subHeader.offset().top;
 
-  // sub-header
-  const Position2 = $('#sub-header-target2').offset().top;
-  const Position3 = $('#sub-header-target3').offset().top;
+  if ($(window).width() < 992) {
+    $('#scrollspy').attr('data-bs-root-margin', '0px 0px -634px');
+  } else {
+    $('#scrollspy').attr('data-bs-root-margin', '0px 0px -788px');
+  }
 
-  const tab1 = $('#sub-header-sec1')
-  const tab2 = $('#sub-header-sec2')
-  const tab3 = $('#sub-header-sec3')
+  $(window).resize(() => {
+    targetPosition = subHeader.offset().top;
+  })
 
-  const mainHeaderHeight = $('#main-header').outerHeight(true)
-  const subHeaderHeight = subHeader.outerHeight(true)
-  const allowedExcept = subHeaderHeight * 5/4
-  let SumOfHeaders = mainHeaderHeight + subHeaderHeight + allowedExcept
+  mainHeaderHeight = 60;
 
   $(window).scroll(() => {
     scrollPosition = $(window).scrollTop()
@@ -29,32 +31,34 @@ $(document).ready(() => {
       subHeader.removeClass('fixed-top top-60')
     }
 
-    if (scrollPosition <= Position2 - (SumOfHeaders + 1)) {
-      // sec1 active
-      tab1.addClass('sec-active')
-      tab2.removeClass('sec-active')
-      tab3.removeClass('sec-active')
-    } else if (scrollPosition <= Position3 - (SumOfHeaders + 1)) {
-      // sec2 active
-      tab2.addClass('sec-active')
-      tab1.removeClass('sec-active')
-      tab3.removeClass('sec-active')
-    } else {
-      // sec3 active
-      tab3.addClass('sec-active')
-      tab1.removeClass('sec-active')
-      tab2.removeClass('sec-active')
-    }
-  })
+    // bootstrap scrollspy
+    if ($('#menu_tab1').hasClass('active')) {
+      $('.sec1_tab_ui').css('background-color', 'white');
+      $('.sec2_tab_ui').css('background-color', '#EBEBEB');
+      $('.sec3_tab_ui').css('background-color', '#EBEBEB');
 
-  tab1.on('click', () => {
-    $('html, body').animate({scrollTop: targetPosition - mainHeaderHeight}, 1000)
-  })
-  tab2.on('click', () => {
-    $('html, body').animate({scrollTop: Position2 - SumOfHeaders}, 1000)
-  })
-  tab3.on('click', () => {
-    $('html, body').animate({scrollTop: Position3 - SumOfHeaders}, 1000)
+      $('#menu_tab1').css('color', '#1c3efe');
+      $('#menu_tab2').css('color', 'black');
+      $('#menu_tab3').css('color', 'black');
+    }
+    if ($('#menu_tab2').hasClass('active')) {
+      $('.sec2_tab_ui').css('background-color', 'white');
+      $('.sec1_tab_ui').css('background-color', '#EBEBEB');
+      $('.sec3_tab_ui').css('background-color', '#EBEBEB');
+
+      $('#menu_tab2').css('color', '#1c3efe');
+      $('#menu_tab1').css('color', 'black');
+      $('#menu_tab3').css('color', 'black');
+    }
+    if ($('#menu_tab3').hasClass('active')) {
+      $('.sec3_tab_ui').css('background-color', 'white');
+      $('.sec1_tab_ui').css('background-color', '#EBEBEB');
+      $('.sec2_tab_ui').css('background-color', '#EBEBEB');
+
+      $('#menu_tab3').css('color', '#1c3efe');
+      $('#menu_tab2').css('color', 'black');
+      $('#menu_tab1').css('color', 'black');
+    }
   })
 
   // step trigger
