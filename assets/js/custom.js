@@ -17,11 +17,8 @@ $(document).ready(() => {
     scrollPosition = $(window).scrollTop()
     
     if (scrollPosition >= targetPosition - mainHeaderHeight) {
-      console.log('down')
       subHeader.addClass('fixed-top top-60')
     } else {
-      console.log('up')
-      console.log(targetPosition)
       subHeader.removeClass('fixed-top top-60')
     }
 
@@ -36,7 +33,7 @@ $(document).ready(() => {
       $('#menu_tab3').css('color', 'black');
     }
     if ($('#menu_tab2').hasClass('active')) {
-      $('.sec2_tab_ui').css('background-color', 'white');
+      $('.sec2_tab_ui').css('background-color', '#f7f7fc');
       $('.sec1_tab_ui').css('background-color', '#EBEBEB');
       $('.sec3_tab_ui').css('background-color', '#EBEBEB');
 
